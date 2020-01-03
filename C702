@@ -1,0 +1,997 @@
+
+
+Cohort notes
+SDL Goals
+	Reduce Vulnerabilities and Residual Risks
+	Protecting CIA triad
+Threat modeling - open lanes for software to be attacked
+Attack surface validation - data entrances, trust relationships, exits
+
+Static testing - rule based, tools or eyes, not in production
+		Typically prior to compiling
+Dynamic - running code, using testing software
+
+Human element
+	Threat modeling, least privileges(person or process), defense in depth, thinking like an adversary, training and mentorship
+
+Threat modeling and attack surfaces
+	Entry/exit points, trusted entities
+	Where is software accepting inputs/what can protect it? Is it trusted, how can you verify? (process and people)
+
+CWE
+SANS
+NVD
+MITRE
+CERT Cyb Sec Bulletin
+OWASP
+
+Critical Tolls
+	Fuzzer, peach fuzzing tool
+	Static analyst - HP static code analyzer
+	Dynamic analysis - HPWebInspect, QAInspec, IBMAppScan, Whote Hat Sentimental, Varcode	
+
+Least Privilege
+	Elevation of privilege - horizontal(Read > read/write) or vertical(guest > user > admin)
+	User rights, CPU privileges, memory file, system privileges
+
+SDL (Security Development Life Cycle)
+	A1 - Security Assessment
+	A2 - Architecture
+	A3-A4 - Design and Development
+A5 -Ship
+PRS - Post release support
+
+SDLC (Software Development Life Cycle)[waterfall and agile]
+Concept
+Planning
+Design and Development Readiness
+Release and Launch
+Support and Sustain 
+
+Threat Modeling
+	Identify Security Objectives> Survey the application> Decompose > ID Threats > ID Vulnerabilities
+	Use:	 Data Flow Diagrams
+ STRIDE
+ map all threats to vulns
+ rank threats
+ Mitigations for all vulnerabilities
+ Fix vulns in order of priority
+
+
+White Box - Everything known
+	Source code analysis
+
+Gray Box - Partially known
+	Dynamic code analysis
+
+Blackbox - nothing known
+	Fuzz, vuln, pen
+
+QA testing - weak PWs, XSS, inputvalidation
+
+Ship Steps
+	Policy compliance > 
+vuln Scans > 
+pen testing > 
+open source license review >
+ final security review	
+	Threat modeling currnet/Vulns known and mitigated
+	Static, dynamic, fuzzing
+	Policy and regulatory requirements met
+
+Post release support
+	Change management
+	PSIR post release incident response team
+	Public disclosures
+
+Real world threats 
+	Strategic - critical infrastructure typically state sponsored and broad
+	Tactical - surgical and specific
+	User specific - small scale, monetary gain exampl
+
+Risk assement model DREAD: damage > reproducibility > exploitability > affected users > Discoverability
+	
+COTS - common off the shelf
+GOTS - government off the shelf
+Supply chain attacks
+
+Cardinality
+Degree
+
+
+	
+
+
+
+
+
+
+
+
+
+
+CH1
+
+1.1
+1.2
+Software security - building secure software
+Application security - securing the software
+
+Security Development Life Cycle - cycle of developing secure software
+Software Development Life Cycle - developing quality software. 
+*SDL in notes refers to both
+
+SDL goals - reduce sec and privacy problems + reduce severity of remaining vulns. 
+
+Static analysis - looks for fixed set of problems
+Threat modeling - principles like least privilege and defense in depth
+	Human element is key in both
+	Training is a key element
+1.3
+Quality code comes before secure code
+You cannot have quality without security or security without quality. 
+
+1.4
+CIA is core 
+
+1.5
+Threat modeling -To understand the potential security threats to the system, determine risk, and establish appropriate mitigations.
+Attack surface - The entry points and exit points of an application that may be accessible to an attacker
+
+CH2
+
+Cards
+Techniques used in penetrating valid channels of authentication - XSS, SQLi, buffer overflow exploitation
+
+Trustworthy Computing Security Development Lifecycle (SDL) - most well known
+
+Cigital BSIMM, OWASP Open SAMM- Two very popular software security maturity models that have been developed and continue to mature at a rapid rate
+
+BSIMM Building Security in maturity model - A study of real-world software security initiatives organized so that you can determine where you stand with your software security initiative and how to evolve your efforts over time
+
+OWASP Software Assurance Maturity Model (SAMM) - A flexible and prescriptive framework for building security into a software development organization
+
+SAFECode A global, industry-led effort to identify and promote best practices for developing and delivering more secure and reliable software, hardware, and service
+
+Software Assurance Program -The SwA Program seeks to reduce software vulnerabilities, minimize exploitation, and address ways to improve the routine development and deployment of trustworthy software products
+
+Software Assurance Metrics And Tool Evaluation (SAMATE) - The project dedicated to improving software assurance by developing methods to enable software tool evaluations, measuring the effectiveness of tools and techniques, and identifying gaps in tools and methods
+
+Bugtraq IDs Identifiers for a commercially operated vulnerability database that are used in security advisories and alerts, as well as for discussions on the mailing list
+
+
+2.1
+2.2
+2.3
+2.4
+2.5
+SDL Tools= fuzzing, static, dynamic
+	Fuzz testing or fuzzing is a black-box software testing technique which can be automated or semi-automated, which provides invalid, unexpected, or random data to the inputs of a computer software program
+	Static program analysis is the analysis of computer software that is performed without actually executing programs. It is predominantly used to perform analysis on a version of the source code; AKA static application security testing (SAST),
+Dynamic program analysis is the analysis of computer software that is performed by executing programs on a real or virtual processor in real time. 
+2.6
+Principle of least privilege 
+horizontal and vertical attacks
+
+2.7
+2.8
+Use metrics 
+
+*2.9
+Typical SDL phases
+
+2.10
+Waterfall method
+- high cost, high risk, less efficient
+-Each stage signed off
+-lots of documentation
+Iterative waterfall 
+- Like traditional waterfall with more granular sub-scopes
+Agile
+	-A time-boxed iterative approach that facilitates a rapid and flexible response to change, which in turn encourages evolutionary development and delivery while promoting adaptive planning, development, teamwork, collaboration, and process adaptability throughout the lifecycle of the project
+Scrum
+	An iterative and incremental Agile software development method for managing software projects and product or application development
+Lean
+	Focuses on features rather than groups of features, you select, plan, develop, test, and deploy one feature before you select, plan, develop, test, and deploy the next feature
+
+CH3 - Security Assessment (A1)
+
+ID Security Requirements
+	failure to gather requirements often cause project failure
+	current and future needs
+	must understand business needs (SABSA, TOGAS, ZACHMAN)
+Gather Requirements
+	observation, 
+Interview,
+review documentation, 
+regulatory requirements, compliance, logs, access controls
+function/nonfunctional
+Policy
+	High level direction mandates security action
+	Up to date, legal, communicated, simple, clear, exceptions
+	Increases liability
+Actions
+	Procedures -controlled, consistent, compliance
+	Internal/external standards > consistent, documented
+	Baseline config- minimum acceptable standard | benchmarking
+	Guidelines - recommendations
+	Policy risk - inflexible, easily outdated, restrictive
+	Policy benefits - consistency, completeness, security requirements, evidence
+Legal
+	External laws requiring compliance, HIPAA, PCI-DSS
+	May require auditing
+
+
+3.1 Software Security Team Is Looped in Early
+Privacy Impact Assessment (PIA) process evaluates issues and privacy impact rating related to the privacy of personally identifiable information in the software and will be initiated during this stage of the development process.
+
+Early identification and mitigation of security vulnerabilities and misconfigurations will result in lower cost of security control implementation and vulnerability mitigation; provide awareness of potential engineering challenges caused by mandatory security controls; and identification of shared security services and reuse of security strategies and tools to reduce development cost while improving security posture through proven methods and techniques
+
+3.2 Software Security Hosts a Discovery Meeting
+Security built in, not bolted on
+
+Functional requirements - what software must do to serve the business
+Non functional - guardrails for the functional requirements
+
+3.3 Software Security Team Creates an SDL Project Plan
+
+3.4 Privacy Impact Assessment (PIA) Plan Initiated
+Privacy Impact analysis 
+
+3.5  Security Assessment (A1) Key Success Factors and Metrics
+Key success factors
+1.Accuracy of planned SDL activities -	All SDL activities are accurately identified.
+2.Product risk profile-		Management understands the true cost of developing the product.
+3.Accuracy of threat profile-	Mitigating steps and countermeasures are in place for the product to be successful in its environment.
+4.Coverage of relevant regulations, certifications, and compliance frameworks-	All applicable legal and compliance aspects are covered.
+5.Coverage of security objectives needed for software-	"Must have" security objectives are met.
+
+Deliverables and Metric
+
+CH4 A2 Architecture
+Include Security in Software Design
+	Sec is a non functional requirement
+	Requirements: when, who, what, when, where, why, how
+			   Numbers of users, transactions, acceptable response times
+Standard and Best practices
+	Completeness, effectiveness, avoid critical threats
+	Iso27001 - info sec mg sys requirements 
+context of org, leadership, planning, support, operation, improve
+Iso27002 - controls | 04-monitoring|05-risks|07-audit| 08-PII in the cloud
+Iso - standard, certification available, provides peace to stakeholders
+OpenSAMM
+	Software Assurance Maturity Model
+	How are we doing, where do we need to go, measure through iterations
+	Flexible to different orgs/markets
+	Maturity levels 0(initial) 1(ad hoc)  2(increase efficiency) 3(mastery)
+OWASP
+	Open Web Application Security Project
+Building Security In Maturity(BSSIMv7)
+	Measure current state of software security
+	4 areas: governance: strategy, metric, compliance, policy, training
+  Intelligence: attack models, sec features and designs, standards and requirements 
+  SSDL lifecycle: architecture analysis, code review, sec testing
+  Deployment:go live, pen testing, config management, 
+SAFECode
+Increase trust in info and comm tech through advancing software assurance methods 
+tactical threat modeling
+NIST and ISO
+	Help understanding security requirements
+	Proven Info Sec processes
+	Risk management, info and sys categorization, control selection/testing, securing technologies
+PCI-DSS and PA-DSS
+
+
+Develop Use and Misuse
+	Error handling
+
+Threat Modeling
+	ID and prioritize based on impacts
+	Data flows, past incidents, arch reviews, sequence diagrams, attack trees, workshops
+	ID threats: list of assets, threat sources, attack vectors
+
+Project Risk
+To avoid project failures
+New tech, lack of skills, lack of support, change of business, merger/acquisition, new regs
++Schedule, scope, planning
+Steering committee
+Resource pooling
+Regular reporting
+Change control(scope creep)
+Planning Methods:
+Critical path methodology (CPM)
+Program Review and Evaluation Technique (PERT) - coordination between multiple entities for projects 
+GANTT Chart
+
+Develop Security Requirements
+RTM - Requirement Traceability Matrix - are requirements met yet or not?
+
+
+A2 Policy compliance analysis
+	-what needs to be protected and how it will be protected
+SDL policy assessment & scoping
+	-getting senior leadership onboard
+Threat modeling / architecture security analysis
+Identify security objectives.
+Survey the application.
+Decompose it.
+Identify threats.
+Identify vulnerabilities.
+Open source selection (if needed)
+Privacy information gathering and analysis
+	-Gather info for PIA
+
+
+
+CH5 A3 Design and Development
+
+Risk- probability of an event and consequence
+Frame Risk/Risk Context
+	Set borders or frame of a risk
+Error message should not be verbose, use error codes
+Exception handling important
+Fail safe- security of personnel
+Fail secure - maintain security of system
+Economy of mechanism - using already in place controls, don’t recreate the wheel
+Time of check vs time of use - asynchronous attack
+Reference monitor concept rules - mediate all access, protected from modification, testable, always invoked
+Psychology acceptable - most security is not the best, too many difficult controls will be circumvented by user, monitoring, awareness, 
+Least common mechanism - making sure there is no single point of failure/compromise
+	Network isolation, redundancy, different vendors
+
+
+
+A3 Policy compliance analysis
+	-Policies outside of SDL
+Security test plan composition
+	-source code analysis
+	-property based: validates that the software’s implemented functionality 
+	-Source-code fault injection: test code path and error handling
+	-Dynamic code analysis
+	-Binary fault injection: runtime analysis technique
+	-fuzz testing
+	-binary code analysis: code scanners analyze machine code 
+	-Byte code analysis: code scanners
+	-blackbox debugging: Debuggers for low-level programming languages 
+	-vuln scan
+	-pen testing
+Threat model updating
+	-Have you accounted for all the policies, laws, or regulations
+	-Have stakeholders reviewed initial threat model
+	-Have stakeholders agreed to time and availability of threat mitigation
+	- Have you ranked threats by according to stakeholders
+Design security analysis and review
+	-Least privilege
+	-separation of duties
+	-defense in depth
+	-fail safe 
+	-economy of mechanism: simple and comprehensible design and security
+	-Complete mediation: authorization for every object requested
+	-open design
+	-least common mechanism: users not sharing security mechanisms
+ 	- psychological acceptability: ease of use
+	-weakest link- find it, use defense in depth
+	-Leveraging existing components: utilizing existing sec mechanisms
+Privacy implementation assessment
+	P1: High Privacy Risk. The feature, product, or service stores or transfers personally identifiable information (PII), changes settings or file type associations, or installs software.
+P2: Moderate Privacy Risk. The sole behavior that affects privacy in the feature, product, or service is a one-time, user-initiated, anonymous data transfer (for example, the user clicks on a link and the software goes out to a website).
+P3: Low Privacy Risk. No behaviors exist within the feature, product, or service that affect privacy. No anonymous or personal data is transferred, no PII is stored on the machine, no settings are changed on the user’s behalf, and no software is installed
+
+CH6 A4 Design and development 
+
+Why reivew code?
+	Development stage, discover vulnerabilities sooner
+Code Review Type:
+	Dynamic/Static
+	Peer Review
+	Use Acceptance Testing(UAT)Beta phase
+	Fuzz Testing
+	Fault Injection -introduce faults into code
+	Mutation Testing - small modifications to the programs 
+	Load testing - under load until break
+	Security regression - re-executed test after upgrade
+Scope > Categorize Vulns > Recommendations > 
+
+A4 Policy compliance analysis
+Security test case execution
+Static analysis
+Dynamic Analysis
+Fuzz testing
+Manual code review
+Privacy validation and remediation
+
+CH7
+Intercept proxies - intercept communication between web app and computer
+Burp Suite
+OWASP ZAP.
+Web Application Firewall - protect software on web servers and backend databases
+Nikto-vuln scanner
+Source Authenticity - verifying source of hardware/software (software fingerprinting HASH)
+Reverse engineering - decomposing code, obfuscating code, reverse engineering lab
+
+INput validation
+Buffer overflow
+Command injection
+
+
+
+
+7.1
+Policy Compliance Analysis
+7.2
+Vulny scans
+	AppScan by IBM
+GFI Languard by GFI
+Hailstorm by Cenzic
+McAfee Vulnerability Manager (MVM) by McAfee
+Nessus by Tenable Network Security
+Retina Web Security Scanner by eEye Digital Security
+WebInspect by HP
+7.3
+Pen testing
+7.4
+Open-Source Licensing Review
+7.5
+Final Review - During final security review of software being developed, all of the security activities performed, including threat modeling, tools output, and performance against requirements defined early in the process, are assessed again to determine whether the software product is ready for release and shipping.
+7.6 
+Final privacy reviews
+7.10
+
+
+
+
+CH8
+
+
+Secure software Operation
+Backs ups, change management, rollbacks
+Data migration plans
+Post implementation support
+Developers, superusers, operations, security/audit
+Logs, errors addresses, access controls set, backups complete, 
+Pen testing, vuln assessment, physical/enviro controls, users trained 
+Gather feedback
+Credentials
+Certificates - hierarchical/web of trust
+Key repository - public storage
+Update certificated merger, alternate names, 
+Intellectual property - source code
+-escrow third party who keeps key or source code
+-code obfuscation/shrouded code
+Software Protection - patent, trademark, copyright, tradeSecret, 
+Work product - NDA, non compete, contractors/3rd party
+Always improving
+Patch Vuln management
+Release management of patches
+Digital shrink wrap - signing code, verify source/integrity, protect from malware
+Automation of patch role out
+
+Product Security Incident Response Team (PSIRT) is responsible for responding to software product security incidents involving external discoveries of post-release software product security vulnerabilities
+
+3rd party testing is good to test whole stack
+
+Software can get certified, like HIPAA
+
+Legacy software typically no secure
+
+Merger and acquisitions can be dangerous 
+
+External Vulnerability Disclosure Response Process-
+In this post-release phase of the SDL cycle, it is critical to have a well-defined and documented external vulnerability disclosure response process.
+
+Post-Release Certifications
+Relevant certifications needed after the product is released (or deployed in the cloud) should have been identified in one of the earlier phases of the SDL cycle.
+
+SDL Cycle for Any Architectural Changes or Code Re-uses
+Any architectural or code changes or code/component re-uses should trigger SDL activities (though not all may be needed, depending on the significance of the changes).
+
+CH9
+
+Sec COding Practices
+-input validation
+-canonicalization - parameter tampering, saying same thing different ways
+Injection, Session Management, XSS
+SQLi prevention = safe API’s, 
+Broken Authentication/Session Management	
+Insecure Direct Object Reference - improper access controls
+Sensitive Data Exposure - fraud, privacy, ID Theft
+Memory Management - data loss, data disclosure, availability
+RACE Conditions - two functions ‘racing’ for a resource, random order of execution - Time of check Time of use
+TOCTU Time of Check Time of Use
+Resolved by MUTEX, Triggers, 
+ACID Test
+Atomicity - task either all or nothing
+Consistency -forces integrity rules
+Isolation - one transaction cannot interfere with another
+Durability - transactions complete and permanent
+Error Handling and logging
+Threat modeling, intentional attacks, chained exploit
+Fail secure - won't compromise sys sec, complete lock down
+Fail safe - allow users to exit
+Fail open - everything still opens
+Non verbose error messages
+Logging
+Who did what and when
+Audit hooks
+Maintenance hooks
+Integrated testing facility
+Secure by: Design, Default, Deployment
+Compiler -pre process, created executable: C, COBALT
+Interpreter - Python, Ruby
+Debug - see issue
+Code protection
+Tampering, reverse-engineering, disclosure of intellectual program
+Obfuscation, shrouding: manual and automated process
+Code signing: authenticated source and integrity 
+Input output validation
+White list - Blacklist
+Encoding data - XSS prevention, escape data
+API Security - authentication, random Identifiers, 
+
+CH10
+Attacker profile -A collection of information about a type of threat actor
+Strategic attacks-These attacks are typically planned and controlled to target information assets including specifications, technologies, plans, capabilities, procedures, and guidelines to gain advantage
+User-targeted attacks-These specific software attacks can be strategic, tactical, or opportunistic and may involve targeting a privilege escalation of a specific user that exploits a vulnerability in software to gain access to resources and information that would normally be unrestricted
+Cyber spying, cyber espionage-This is the act or practice of obtaining secrets without the permission of the holder of the information for advantage using methods on networks or computers through the use of cracking techniques and malicious software
+Traditional organized crime syndicates-Cybercrime has evolved from the domain of individuals and small groups to these groups and criminally minded technology professionals working together and pooling their resources and expertise
+Socio-political attacks-These attacks are often intended to elevate awareness of a topic but can also be a component or a means to an end with regard to political action groups, civil disobedience, or part of a larger campaign
+Cyber war-This term gives the impression that the conflict is happening only online, when in fact a more accurate interpretation is weapons are used in the digital theater of conflict that can be strategically aligned with traditional (physical) warfare activities
+Tactical cyber attacks-These threats are typically surgical by nature, have highly specific targeting, and are technologically sophisticated
+Dashboard-By using the metrics in the SDL model, you will be able to provide information to your corporate management and internal customers as to the current state of your program which can be used to identify gaps used to justify headcount, funding, and other resources when needed
+Virtual team-Unlike a fully centralized function, this type of team, handled with care, can be coalesced and led by a far smaller central team
+
+
+
+CH11
+Supply Chain Acquisition - 3rd party software
+COTS Commercial off the shelf: approved, tested, training 
+GOTS Govt off the shelf: approved, testing, training,
+3rd Part disadvantage
+Inflexible, unknown functions, cost, vendor lockin, security, trusted updates, 
+Outsourcing Software Development
+Advantages: Skills, cost,
+Disadvantages:costs, inflexible, continued support, legality of code ownership, test data, outsourced co. fails?, escrow trusted third party, 
+Verify pedigree and providence
+Legit: company, software, licensing
+Secure environment, code, and API’s
+Lineage of the company, competencies of staff, develop themselves or further outsourced
+In compliance 
+
+CH12	
+Provide Support to acquisition process
+Choosing vendor: cost, location, reputation, skills/qualified staff
+Evaluate Vendor: certified? ISO, PCIDSS
+Requirement gathering, maturity of process they use
+3rd part evaluation
+Vendor support or in house
+Warranty, in house, SLAs
+Audit: standards, policies, and procedures
+Throughout project: budget, timing, scope, business deliverable is correct
+Regulatory compliance met
+SLAs | expectations vs results objectively 
+Product deployment and sustainment
+Patches, vulnerability solutions, new feature/enhancments
+Customization, documentation
+Operational readiness: backup, license
+	
+
+
+
+
+
+
+
+
+
+CISSP
+
+2.6 Lesson 13: Managing Identity and Authentication 
+Done, review of IAM section
+
+2.6Lesson 14: Controlling and Monitoring Access of the CISSP resource.
+Permissions: In general, permissions refer to the access granted for an object
+Rights: A right primarily refers to the ability to take an action on an object
+Privileges are the combination of rights and permissions.
+
+Access control matrix is a table that includes subjects, objects, and assigned privileges
+Capability tables are another way to identify privileges assigned to subjects. They are different from ACLs in that a capability table is focused on subjects (such as users, groups, or roles). SUBJECT FOCUSED
+constrained interfaces or restricted interfaces to restrict what users can do or see based on their privileges
+Content-dependent access controls restrict access to data based on the content within an object.
+Context-dependent access controls require specific activity before granting users access (making sure digital software is paid for before allowing download)
+Need to Know: This principle ensures that subjects are granted access only to what they need to know for their work tasks and job functions
+The principle of least privilege ensures that subjects are granted only the privileges they need to perform their work tasks and job functions. 
+the separation of duties and responsibilities principle ensures that sensitive functions are split into tasks performed by two or more employees. 
+
+Rule-based access control: A key characteristic of the rule-based access control model is that it applies global rules that apply to all subjects. 
+Role Based Access Control: A key characteristic of the Role Based Access Control (RBAC) model is the use of roles or groups. Instead of assigning permissions directly to users, user accounts are placed in roles and administrators assign privileges to the roles.
+discretionary Access Control: A key characteristic of the Discretionary Access Control (DAC) model is that every object has an owner and the owner can grant or deny access to any other subjects. 
+Attribute Based Access Control: A key characteristic of the Attribute Based Access Control (ABAC) model is its use of rules that can include multiple attributes. This allows it to be much more flexible than a rule-based access control model that applies the rules to all subjects equally. 
+Mandatory Access Control: A key characteristic of the Mandatory Access Control (MAC) model is the use of labels applied to both subjects and objects. 
+Hierarchical Environment: A hierarchical environment relates various classification labels in an ordered structure from low security to medium security to high security, such as Confidential, Secret, and Top Secret, respectively.
+Compartmentalized Environment: In a compartmentalized environment, there is no relationship between one security domain and another. 
+Hybrid Environment: A hybrid environment combines both hierarchical and compartmentalized concepts so that each hierarchical level may contain numerous subdivisions that are isolated from the rest of the security domain. 
+
+Access aggregation refers to collecting multiple pieces of nonsensitive information and combining (i.e., aggregating) them to learn sensitive information
+Passwords are the weakest form of authentication, and there are many password attacks available.
+A dictionary attack is an attempt to discover passwords by using every possible password in a predefined database or list of common or expected passwords.
+brute-force attack is an attempt to discover passwords for user accounts by systematically attempting all possible combinations of letters, numbers, and symbols.
+birthday attack focuses on finding collision
+rainbow table reduces this time by using large databases of precomputed hashes
+Sniffing captures packets sent over a network with the intent of analyzing the packets
+spoofing (also known as masquerading) is pretending to be something, or someone, else. 
+Phishing is a form of social engineering that attempts to trick users into giving up sensitive information, opening an attachment, or clicking a link. 
+Spear phishing is a form of phishing targeted to a specific group of users, such as employees within a specific organization
+Spear phishing is a form of phishing targeted to a specific group of users, such as employees within a specific organization
+Vishing While attackers primarily launch phishing attacks via email, they have also used other means to trick users, such as instant messaging (IM) and VoIP.
+side-channel attack is a passive, noninvasive attack intended to observe the operation of a device
+
+
+4.3 For more information about threat modeling, refer to Section 1.4: "Understand and Apply Threat Modeling Concepts and Methodologies" in Lesson 1  of the CISSP resource.
+A proactive approach to threat modeling takes place during the early stages of systems development, specifically during initial design and specifications establishment. Predicting threats
+reactive/adversarial approach to threat modeling takes place after a product has been created and deployed. Pentesting
+
+Focused on Assets: This method uses asset valuation results and attempts to identify threats to the valuable assets
+Focused on Attackers: Some organizations are able to identify potential attackers and can identify the threats they represent based on the attacker's goals.
+Focused on Software: If an organization develops software, it can consider potential threats against the software.
+
+
+Threat Modeling
+Stage 1
+STRIDE: Assesses application threats such as an attack to gain the access of target system or to prevent authorized use of a resource
+PASTA (Process for attack simulation and threat analysis): Targets at determining the countermeasures in alliance to the value of the assets to be preserved
+Trike: Focuses on a risk-based methodology and produces a framework for communication and collaboration among the workers
+VAST (Visual, agile, and simple threat): Uses Agile project management and programming principles to combine threat and risk management into an Agile environment
+
+Stage 2
+Diagrams to understand data flow
+Stage3
+Reduction analysis is also known as decomposing the application, system, or environment. Dividing application into smaller compartments.
+Trust Boundaries: Any location where the level of trust or security changes
+Data Flow Paths: The movement of data between locations
+Input Points: Locations where external input is received
+Privileged Operations: Any activity that requires greater privileges than of a standard user account or process, typically required to make system changes or alter security
+Details about Security Stance and Approach: The declaration of the security policy, security foundations, and security assumptions
+Stage 4
+Prioritize and Respond
+ 
+
+
+
+11 Read Section 1.5: "Apply Risk-Based Management Concepts to the Supply Chain" in Lesson 1 of the CISSP resource.
+When evaluating a third party for your security integration, consider the following processes:
+On-Site Assessment: Visit the site of the organization to interview personnel and observe their operating habits.
+Document Exchange and Review: Investigate the means by which datasets and documentation are exchanged as well as the formal processes by which they perform assessments and reviews.
+Process/Policy Review: Request copies of their security policies, processes/procedures, and documentation of incidents and responses for review.
+Third-Party Audit: Having an independent third-party auditor can provide an unbiased review
+
+A supply chain is a long and complex history of any finished system, which has been assembled rather than manufactured by a computer or equipment manufacturer whereas secure supply chain demonstrates that all of the vendors or links in the chain are trustworthy and reliable organizations that reveal the practices and security requirements to their business partners.
+
+
+12 For more information on vendor agreements and SLAs, read the topic "Vendor, Consultant, and Contractor Agreements and Controls" in Section 2.1 "Personnel Security Policies and Procedures" in Lesson 2 of the CISSP resource.
+
+	Done review 
+
+13 CISSP Resource Lesson 21(really 23): Malicious Code and Application Attacks 
+
+Master Boot Record Viruses: The master boot record (MBR) virus is one of the earliest known forms of virus infection. These viruses attack the MBR—the portion of bootable media
+File Infector Viruses: Many viruses infect different types of executable files and trigger when the operating system attempts to execute them.
+Macro Viruses - VB Office plugins
+Service Injection Viruses: injecting themselves into trusted runtime processes of the operating system, such as svchost.exe, winlogin.exe, and explorer.exe
+
+Multipartite viruses use more than one propagation technique in an attempt to penetrate systems that defend against only one method or the other.
+Stealth viruses hide themselves by actually tampering with the operating system to fool antivirus packages into thinking that everything is functioning normally.
+ Polymorphic viruses actually modify their own code as they travel from system to system. The virus's propagation and destruction techniques remain the same, but the signature of the virus is somewhat different each time it infects a new system
+Encrypted viruses use cryptographic techniques, s to avoid detection
+
+Logic bombs are malicious code objects that infect a system and lie dormant until they are triggered by the occurrence of one or more conditions such as time, program launch, website logon, and so on
+trojan horse—a software program that appears benevolent but carries a maliciouspayload
+
+Worms propagate themselves
+
+Buffer overflow vulnerabilities exist when a developer does not properly validate user input to ensure that it is of an appropriate size.
+The time of check to time of use (TOCTOU or TOC/TOU) issue is a timing vulnerability that occurs when a program checks access permissions too far in advance of a resource request.
+Back doors are undocumented command sequences that allow individuals with knowledge of the back door to bypass normal access restrictions
+most common ways that attackers wage escalation-of-privilege attacks is through the use of rootkits. 
+
+Cross-site scripting (XSS) attacks occur when web applications contain some type of reflected input. 
+Cross-site request forgery attacks, abbreviated as XSRF or CSRF attacks, are similar to cross-site scripting attacks but exploit a different trust relationship
+SQL injection attacks use it to gain unauthorized access to an underlying database.
+
+IP probes (also called IP sweeps or ping sweeps)
+port scan software to probe all the active systems on a network and determine what public services are running on each machine.
+Vuln scan tools: Nessus, OpenVAS, Qualys, Core Impact, and Nexpose.
+
+IP spoofing attack masquarading
+Session hijacking attacks occur when a malicious individual intercepts part of the communication between an authorized user and a resource and then uses a hijacking technique to take over the session and assume the identity of the authorized use
+
+
+
+ 
+
+6.2 CISSP Lesson 17 Security Assessment and Testing
+Code review AKA Fagan inspection
+Planning
+Overview
+Preparation
+Inspection
+Rework
+Follow-up
+Mutation (Dumb) Fuzzing: Takes previous input values from actual operation of the software and manipulates (or mutates) it to create fuzzed input. It might alter the characters of the content, append strings to the end of the content, or perform other data manipulation techniques.
+Generational (Intelligent) Fuzzing: Develops data models and creates new fuzzed input based on an understanding of the types of data used by the program.
+ 
+ 
+
+
+8.5 Although Lesson 20(really 22) of the CISSP resource is included in its entirety in Part 3 of this course, it's worth mentioning here that Section 20.1 "Introducing Systems Development Controls" provides additional information about change management, configuration management, and how these processes improve software security 
+
+
+13 CISSP Resource Lesson 20(really22): Software Development Security 
+
+CISSP Lesson 22 Software Development Life Cycle
+22.1
+Assurance procedures are simply formalized processes by which trust is built into the lifecycle of a system
+
+Avoiding and mitigating sys failure
+Input validation
+Session management
+Error handling
+Logging
+Fail secure-puts the system into a high level of security (and possibly even disables it entirely) until an administrator can diagnose the problem and restore the system to normal operation.
+Fail open-allows users to bypass failed security controls, erring on the side of permissiveness.
+
+A STOP error occurs when an undesirable activity occurs in spite of the OS's efforts to prevent it.
+
+System Development Life Cycle
+Conceptual definition - creating the basic concept statement for a system
+Functional requirements determination - Once all stakeholders have agreed on the concept statement, it's time for the development team to sit down and begin the functional requirements process.
+Input > behavior > output
+Control specifications development
+Design review
+Code review walk-through
+System test review
+Maintenance and change management
+
+Waterfall Model
+7 stages
+Sys Req > Sof Req >  Prelim Design > Detailed Design > Code/Debug > Testing > Op and Main
+Iterative, can step back only one stage
+Modified waterfall model added validation and verification steps to each phase
+
+Spiral Model
+Several iterations of the waterfall, model of models
+Each loop would allow for 7 waterfall stages
+
+Agile Model
+The 12 principles, as stated in the Agile Manifesto, are as follows:
+Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
+Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+Business people and developers must work together daily throughout the project.
+Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+Working software is the primary measure of progress.
+Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+Continuous attention to technical excellence and good design enhances agility.
+Simplicity—the art of maximizing the amount of work not done—is essential.
+The best architectures, requirements, and designs emerge from self-organizing teams.
+At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.
+The Agile development approach is quickly gaining momentum in the software community and has many variants, including Scrum, Agile Unified Process (AUP), the Dynamic Systems Development Model (DSDM), and Extreme Programming (XP).
+
+Software Engineering Institute (SEI)
+
+CMMI Maturity Levels
+
+ML 1: Initial—Unpredictable, poorly controlled, reactiveIn this phase, you'll often find hardworking people charging ahead in a disorganized fashion. There is usually little or no defined software development process.
+ None
+ML 2: Managed/Repeatable-Project Processes characterized, reactive In this phase, basic lifecycle management processes are introduced. Reuse of code in an organized fashion begins to enter the picture, and repeatable results are expected from similar projects. SEI defines the key process areas for this level as Requirements Management, Software Project Planning, Software Project Tracking and Oversight, Software Subcontract Management, Software Quality Assurance, and Software Configuration Management.
+Configuration Management
+Measurement and Analysis
+Process and Product QA/Project Monitoring and Control
+Project Monitoring and Control
+Project Planning
+Requirements Management
+Supplier Agreement Management
+ML 3: Defined—Project Processes characterized,proactiveIn this phase, software developers operate according to a set of formal, documented software development processes. All development projects take place within the constraints of the new standardized management model. SEI defines the key process areas for this level as Organization Process Focus, Organization Process Definition, Training Program, Integrated Software Management, Software Product Engineering, Intergroup Coordination, and Peer Reviews.
+Decision Analysis and resolution
+Integrated project management
+Integrated suppliers management
+Integrated teaming
+Org Environment for integration
+Org process definition
+Org process focus
+Org Training
+Product integration
+Requirements for development
+Risk Management
+Technical solution
+Validation and verification
+ML 4: Quantitatively Managed—Process measured and controlled - In this phase, management of the software process proceeds to the next level. Quantitative measures are utilized to gain a detailed understanding of the development process. SEI defines the key process areas for this level as 
+Quantitative Process Management 
+Software Quality Management.
+Org Process Performance
+ML 5: Optimizing-Focus on improvement in the optimized organization, a process of continuous improvement occurs. Sophisticated software development processes are in place that ensure that feedback from one phase reaches to the previous phase to improve future results. SEI defines the key process areas for this level as 
+Defect Prevention, 
+Technology Change Management, 
+Process Change Management
+Organization innovation.Deployment
+Causal analysis/resolution
+
+CMMI Process
+Project Management
+Quantitative project management
+Project Monitoring and control
+Integrated supplier management
+Integrated teaming
+Risk Management
+Integrated project management
+Supplier agreement management
+Project Planning
+Process Management
+Organizational process performance
+Organizational Training
+Organizational process definition
+Organizational process focus
+ Organizational innovation and deployment
+Engineering
+Verification
+Technical Solution
+Validation
+Product Integration
+Requirements development
+ Requirements Management
+Support
+Configuration Management
+Process and product quality assurance
+Measurement and Analysis
+Organizational environment for integration
+Decision analysis and resolution
+Casual analysis and resolution
+
+
+Capability Levels
+	Level 0: Incomplete
+	Level 1:Initial
+	Level 2: Managed
+	Level 3: Defined
+	
+
+
+
+IDEAL
+Initiating: In the initiating phase of the IDEAL model, the business reasons behind the change are outlined, support is built for the initiative, and the appropriate infrastructure is put in place.
+Diagnosing: During the diagnosing phase, engineers analyze the current state of the organization and make general recommendations for change.
+Establishing: In the establishing phase, the organization takes the general recommendations from the diagnosing phase and develops a specific plan of action that helps achieve those changes.
+Acting: In the acting phase, it's time to stop "talking the talk" and "walk the walk." The organization develops solutions and then tests, refines, and implements them.
+Learning: As with any quality improvement process, the organization must continuously analyze its efforts to determine whether it has achieved the desired goals and, when necessary, propose new actions to put the organization back on course.
+
+A Gantt chart is a type of bar chart that shows the interrelationships over time between projects and schedules
+
+22.2
+
+Tuple- row in table
+Cardinality - number of rows in relation
+Degree - the number of columns
+Domain - attribute that states amount of values the said attribute can take
+
+Degree-4
+Cardinality-2
+1
+2
+3
+4
+2
+
+
+
+
+
+
+
+
+Database Management System Architecture
+	Hierarchical and Distributed Databases - like org chart
+	Relational database consists of flat two dimensional tables made up of rows and columns (Use SQL)
+	 A candidate key is a subset of attributes that can be used to uniquely identify any record in a table.
+	A primary key is selected from the set of candidate keys for a table to be used to uniquely identify the records in a table
+	A foreign key is used to enforce relationships between two tables, also known as referential integrity. 
+
+Database ACID Model:
+Atomicity: Database transactions must be"all-or-nothing" affair. If any part of the transaction fails, the entire transaction must be rolled back as if it never occurred.
+Consistency: All transactions must begin operating in an environment that is consistent with all of the database's rules 
+Isolation: The isolation principle requires that transactions operate separately from each other. 
+Durability: Database transactions must be durable. That is, once they are committed to the database, they must be preserved. 
+
+Concurrency, or edit control, is a preventive security mechanism that endeavors to make certain that the information stored in the database is always correct or at least has its integrity and availability protected.
+	Lost update -occur when two different processes make updates to a database unaware of each other's activity.
+Dirty reads-read from a non commited change
+
+Other sec mechnisms:
+	-time and date stamps to maintain data integrity and availability.
+	-objects can be controlled granularly within the database
+	content dependent access control
+	Cell suppression: hiding individual fields/cell or imposing strong sec on them
+-context dependent: large picture relationship view for ACL
+-database partitioning to subvert aggregation and inference vulnerabilities
+-Polyinstantiation, in the context of databases, occurs when two or more rows in the same relational database table appear to have identical primary key elements but contain different data for use at differing classification levels. It is often used as a defense against some types of inference attacks
+-insert false info
+
+ODBC acts as a proxy between applications and backend database driver
+
+NoSQL database
+	key/value stores
+	Graph databases store data in graph format, using nodes to represent objects and edges to represent relationships
+	Document stores are similar to key/value stores, but XML JSON
+
+22.3
+Memory types
+
+22.4
+Expert Systems -mbody the accumulated knowledge of experts on a particular subject and apply it in a consistent fashion to future decision
+	KNowledge base - if then statements(if Hurricane wind > 120 = Cat 4)
+	Inference engine- analyse information in the knowledge base (Since Cat 4, evacuate) 
+Machine learning
+	Supervised, uses labels
+	Unsupervised, no labels
+	
+Quizlet Supplmental
+
+Define maintenance
+updating software systems to improve or correct them
+
+Define incident response plan
+the documented steps to follow when system attack or failure occurs
+
+What 8 elements should an incident response plan document?
+- monitoring duties for production software
+- a definition for incidents;
+- a contact for incidents;
+- emergency contact for priority incidents;
+- a clear escalation chain
+- software shutdown procedures
+- attack specific procedures
+- security docs & references for externally integrated components
+
+Define final security review
+last step of security testing before release
+
+Define end user license agreement [a.k.a EULA]
+A doc establishing use and liabilities end users and the vendor of software systems
+
+Define the Microsoft security development lifecycle
+A method for integrating security planning into standard development process
+
+What are the 3 final security review outcomes in a Microsoft security development lifecycle
+Passed,
+passed with recommendations, &
+failed
+
+What is a beta version
+A nearly complete build used to test functionality or security flaws before release
+
+what is an archive?
+A backup copy
+
+What 4 factors establish a reasonable timeline for review?
+- is it mission critical?
+- amount of privacy data
+- is the technology sound?
+- can system resources handle the usage?
+
+What is: secure system retirement?
+specifying how elements of a system are being taken offline, continuing, and how the data is being protected
+
+what is the Microsoft SDL Process Template?
+Integrates w/Visual Studio to track and audit security requirements
+
+what is the SDL Threat Modeling Tool?
+tools that assists creating threat models, building on Microsoft Visio
+
+what is the Attack Surface Analyzer?
+snapshots system pre- & post-deployment to see what has changed
+
+
+
+
+
+	
+	
